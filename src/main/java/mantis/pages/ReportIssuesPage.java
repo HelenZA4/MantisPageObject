@@ -1,6 +1,5 @@
 package mantis.pages;
 
-import mantis.utils.UtilsTests;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -57,13 +56,8 @@ public class ReportIssuesPage {
         return newIssueId.getText();
     }
 
-    public void deleteIssue() {
+    public void deleteLastIssue() {
         deleteButton.click();
         deleteIssuesButton.click();
     }
-
-    public String getDeletedIssueSummary() {
-        return newIssueId.getText();
-    }
-
 }
