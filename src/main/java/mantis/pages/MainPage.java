@@ -20,20 +20,26 @@ public class MainPage {
     @FindBy(css = "a[href='/mantisbt/bug_report_page.php']")
     private WebElement reportIssuesPageButton;
 
-    @FindBy(xpath = "//*[contains (text(), 'Assigned to Me')]")
+    @FindBy(xpath = "//*[@id='assigned']")
     private WebElement assignedToMeBlock;
 
-    @FindBy(xpath = "//*[contains (text(), 'Unassigned')]")
+    @FindBy(xpath = "//*[@id='unassigned']")
     private WebElement unassignedBlock;
 
-    @FindBy(xpath = "//*[contains (text(), 'Reported by Me')]")
+    @FindBy(xpath = "//*[@id='reported']")
     private WebElement reportedByMe;
 
-    @FindBy(xpath = "//*[contains (text(), 'Recently Modified')]")
+   @FindBy(xpath = "//*[@id='resolved']")
+    private WebElement resolved;
+
+    @FindBy(xpath = "//*[@id='recent_mod']")
     private WebElement recentlyModified;
 
     @FindBy(css = "tr:nth-child(1) > td.column-id > a")
     private WebElement newIssueId;
+
+    @FindBy(xpath = "//*[@type='submit' and @value='Delete']")
+    private WebElement deleteButton;
 
     @FindBy(css = "input[value='Delete Issues']")
     private WebElement deleteIssuesButton;
@@ -60,9 +66,9 @@ public class MainPage {
         return reportedByMe.getText();
     }
 
-    public String getTitleRecentlyModifiedDisplayed(){
-        return recentlyModified.findElement(By.xpath("//h4//a")).getText();
-    }
+    public String getTitleAssignedToMeBlock(){
+        return assignedToMeBlock.findElement(By.xpath("//h4//a")).getText();
+   }
 
     public void goToViewIssuesPage() {
         viewIssuesPageButton.click();
@@ -70,10 +76,6 @@ public class MainPage {
 
     public void goToReportIssuesPage() {
         reportIssuesPageButton.click();
-    }
-
-    public void goToSureToDeletePage() {
-        deleteIssuesButton.click();
     }
 
     public String getCreatedIssueId() {
